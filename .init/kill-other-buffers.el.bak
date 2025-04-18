@@ -1,0 +1,20 @@
+(defvar my/kill-buffer-exceptions '("Messages" "emacs-file" "scratch"))
+(defun my/kill-buffer-testfn (key lcar)
+  ;; (print (list lcar key (string-match-p (regexp-quote key) lcar)))
+  (string-match-p (regexp-quote key) lcar))
+
+(defun my/kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer
+          (delq (current-buffer) ; filter current buder
+                ;; filter alive and not system
+                (seq-filter (lambda (b) (and (buffer-live-p b) ; filter alive
+                                             (/= (aref (buffer-name b) 0) ?\s) ; filter system
+                                             ;; filter exceptions
+                                             (not (seq-contains-p my/kill-buffer-exceptions
+                                                             (downcase (buffer-name b))
+                                                             #'my/kill-buffer-testfn))))
+                            (seq-uniq (buffer-list))))))
+
+(global-set-key (kbd "C-!") #'my/kill-other-buffers)

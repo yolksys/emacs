@@ -1,0 +1,70 @@
+;;for lsp-mod
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands (lsp lsp-deferred))
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+;;(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+;; optionally if you want to use debugger
+;;(use-package dap-mode
+;;    :ensure t)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+;; optional if you want which-key integration
+(use-package which-key
+    :ensure t
+    :config
+    (which-key-mode))
+
+;;for golang
+(use-package go-mode
+  :ensure t)
+(add-hook 'go-ts-mode-hook #'lsp-deferred)
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t)
+  (setq tab-width 2)
+  (setq indent-tabs-mode 1))
+(add-hook 'go-ts-mode-hook #'lsp-go-install-save-hooks)
+
+;;for typescript
+(use-package typescript-mode
+  :ensure t
+  :after (lsp-mode))
+(add-hook 'typescript-ts-mode-hook #'lsp-deferred)
+(defun lsp-typescript-hooks ()
+  (setq-default typescript-indent-level 2))
+(add-hook 'typescript-ts-mode-hook #'lsp-typescript-hooks)
+;;
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (ansi-color-apply-on-region compilation-filter-start (point-max)))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+;;for angular
+(use-package ng2-mode
+  :ensure t
+  :after (lsp-mode))
+(add-hook 'ng2-ts-ts-mode-hook #'lsp-deferred)
+;;
+;;(setq lsp-clients-angular-language-server-command
+;;'("node"
+;;  "/home/cyf/.nvm/ersions/node/v23.8.0/lib/node_modules/@angular/language-server"
+;;  "--ngProbeLocations"
+;;  "/home/cyf/.nvm/ersions/node/v23.8.0/lib/node_modules"
+;;  "--tsProbeLocations"
+;;  "/home/cyf/.nvm/ersions/node/v23.8.0/lib/node_modules/"
+;;  "--stdio"))
+
+
+(add-hook 'scss-mode-hook #'lsp-deferred)
+(defun lsp-css-hooks ()
+  (setq-default css-indent-offset 2))
+(add-hook 'scss-mode-hook #'lsp-css-hooks)
