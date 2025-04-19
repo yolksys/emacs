@@ -39,12 +39,12 @@
       (lsp-completion-show-kind t)                   ; Optional
       ;; headerline
       (lsp-headerline-breadcrumb-enable t)  ; Optional, I like the breadcrumbs
-      (lsp-headerline-breadcrumb-enable-diagnostics nil) ; Don't make them red, too noisy
+      (lsp-headerline-breadcrumb-enable-diagnostics t) ; make them red
       (lsp-headerline-breadcrumb-enable-symbol-numbers nil)
       (lsp-headerline-breadcrumb-icons-enable nil)
       ;; modeline
       (lsp-modeline-code-actions-enable nil) ; Modeline should be relatively clean
-      (lsp-modeline-diagnostics-enable nil)  ; Already supported through `flycheck'
+      (lsp-modeline-diagnostics-enable t)  ; Already supported through `flycheck'
       (lsp-modeline-workspace-status-enable nil) ; Modeline displays "LSP" when lsp-mode is enabled
       (lsp-signature-doc-lines 1)                ; Don't raise the echo area. It's distracting
       (lsp-ui-doc-use-childframe t)              ; Show docs for symbol at point

@@ -13,6 +13,7 @@
              ("\\.json\\'" .  json-ts-mode)
              ("\\.Dockerfile\\'" . dockerfile-ts-mode)
              ("\\.prisma\\'" . prisma-ts-mode)
+             ("\\.yaml\\'" . yaml-ts-mode)
              ;; More modes defined here...
              )
       :preface
