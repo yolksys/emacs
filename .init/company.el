@@ -8,3 +8,15 @@
   
   :init
   (global-company-mode))
+
+;;(add-to-list 'company-backends 'company-yasnippet)
+(setq company-backends '(company-bbdb company-semantic company-cmake (company-yasnippet company-capf :separate)
+              company-clang company-files
+              (company-dabbrev-code company-gtags company-etags
+               company-keywords)
+              company-oddmuse company-dabbrev))
+
+(defun go-hooks-for-company()
+   (setq-local company-backends
+              '((company-capf company-dabbrev-code company-yasnippet))))
+;;(add-hook 'go-ts-mode-hook #'go-hooks-for-company)

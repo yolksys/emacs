@@ -44,6 +44,9 @@
 (lsp-register-custom-settings
  '(("somesass.scss.completion.suggestFromUseOnly" lsp-scss-completion-suggestFromUseOnly)))
 
+(defun my-scss-mode-hook ())
+
+(add-hook 'scss-mode-hook #'my-scss-mode-hook)
 (add-hook 'scss-mode-hook #'lsp-deferred)
 ;;;
 (with-eval-after-load 'lsp-mode

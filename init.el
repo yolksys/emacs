@@ -12,12 +12,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(apheleia company doom-themes flycheck lsp-ivy lsp-ui olivetti
-              org-appear org-modern pdf-tools rainbow-delimiters
-              saveplace-pdf-view svg-tag-mode treemacs-icons-dired
-              which-key yasnippet))
- '(treesit-font-lock-level 4)
- '(warning-suppress-log-types '((flycheck syntax-checker))))
+   '(apheleia company corfu doom-themes flycheck go-mode lsp-ivy
+              lsp-treemacs lsp-ui olivetti org-appear
+              org-modern org-present org-superstar pdf-tools
+              rainbow-delimiters saveplace-pdf-view svg-tag-mode
+              treemacs-icons-dired visual-fill-column which-key
+              yasnippet))
+ '(treesit-font-lock-level 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -63,7 +64,7 @@
 ;;for org-present
 (load "~/.emacs.d/.init/doom-theme")
 ;;for treemacs
-(load "~/.emacs.d/.init/.treemacs")
+(load "~/.emacs.d/.init/treemacs")
 ;;for yasnippet
 (load "~/.emacs.d/.init/yasnippet")
 ;;for pdf-tool
@@ -90,6 +91,8 @@
 (load "~/.emacs.d/.init/apheleia")
 ;;for lsp-mode
 (load "~/.emacs.d/.init/lsp-mode")
+;;for
+(load "~/.emacs.d/.init/lsp-treemacs")
 
 ;;for
 (load "~/.emacs.d/.init/ngx")
