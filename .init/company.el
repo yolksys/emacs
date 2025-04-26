@@ -10,11 +10,13 @@
   (global-company-mode))
 
 ;;(add-to-list 'company-backends 'company-yasnippet)
-(setq company-backends '(company-bbdb company-semantic company-cmake (company-yasnippet company-capf :separate)
-              company-clang company-files
-              (company-dabbrev-code company-gtags company-etags
-               company-keywords)
-              company-oddmuse company-dabbrev))
+;;;(setq company-backends '(company-bbdb company-semantic company-cmake (company-yasnippet company-capf :separate)
+;;;              company-clang company-files
+;;;              (company-dabbrev-code company-gtags company-etags
+;;;               company-keywords)
+;;;              company-oddmuse company-dabbrev))
+
+(setcar (member 'company-capf company-backends) '(company-yasnippet company-capf :separate))
 
 (defun go-hooks-for-company()
    (setq-local company-backends
