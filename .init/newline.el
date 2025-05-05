@@ -11,6 +11,7 @@
 ;; TODO: right now I am unable to goto previous line, FIXIT
 (global-set-key (kbd "<C-S-return>") (lambda ()
                        (interactive)
-                       (beginning-of-line)
-                       (newline-and-indent)
-                       (previous-line)))
+                       (previous-line)
+                       ;;(beginning-of-line)
+		       (end-of-line)
+                       (newline-and-indent)))
