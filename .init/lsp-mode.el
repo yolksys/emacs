@@ -8,6 +8,7 @@
 	       go-ts-mode
                js-ts-mode) . lsp-deferred))
       :custom
+      (xref-prompt-for-identifier t)      ; for xref-find-definitions
       (lsp-keymap-prefix "C-l")           ; Prefix for LSP actions
       (lsp-completion-provider :none)       ; Using company as the provider
       (lsp-diagnostics-provider :flycheck)
@@ -16,7 +17,7 @@
       (lsp-keep-workspace-alive nil)        ; Close LSP server if all project buffers are closed
       (lsp-idle-delay 0.5)                  ; Debounce timer for `after-change-function'
       ;; core
-      (lsp-enable-xref nil)                   ; Use xref to find references
+      (lsp-enable-xref t)                   ; Use xref to find references
       (lsp-auto-configure t)                ; Used to decide between current active servers
       (lsp-eldoc-enable-hover t)            ; Display signature information in the echo area
       (lsp-enable-dap-auto-configure t)     ; Debug support
